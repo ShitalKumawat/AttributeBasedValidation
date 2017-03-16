@@ -1,0 +1,43 @@
+﻿<Window x:Class="AttributeBasedValidation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AttributeBasedValidation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary  Source="pack://application:,,,/Styles;component/ErrorTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Margin="5" Grid.Row="0" Grid.Column="0" Text="Name" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+        <TextBox Margin="5" Grid.Row="0" Grid.Column="1" Width="200" Height="30" 
+                 HorizontalAlignment="Left" VerticalAlignment="Center" 
+                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                 Style="{StaticResource ErrorTemplateToolTipStyle}"
+                 Text="{Binding Employee.Name, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True,ValidatesOnExceptions=True}" 
+                 ></TextBox>
+        <TextBlock Margin="5" Grid.Row="1" Grid.Column="0" Text="Age" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+        <TextBox Margin="5" Grid.Row="1" Grid.Column="1" Width="200" Height="30" 
+                 HorizontalAlignment="Left" VerticalAlignment="Center" 
+                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                  Style="{StaticResource ErrorTemplatePopStyle}"
+                 Text="{Binding Employee.Age, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,ValidatesOnDataErrors=True,ValidatesOnExceptions=True}"
+                 ></TextBox>
+    </Grid>
+</Window>
